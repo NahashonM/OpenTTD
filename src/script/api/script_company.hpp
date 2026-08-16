@@ -165,6 +165,28 @@ public:
 	static std::optional<std::string> GetName(ScriptCompany::CompanyID company);
 
 	/**
+	 * Get empty month counter.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return number of months company has been empty (-1) if invalid state
+	 */
+	static SQInteger GetMonthsEmpty();
+
+	/**
+	 * Get number of empty month counter resets.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return number of resets on GetMonthsEmpty
+	 */
+	static SQInteger GetMonthsEmptyResets();
+
+	/**
+	 * Reset empty month counter.
+	 * @param months number of months to set, must be a 0|+ve integer .
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return False if unable to set new months empty value.
+	 */
+	static bool SetMonthsEmpty(SQInteger months);
+
+	/**
 	 * Set the name of your president.
 	 * @param name The new name of the president (can be either a raw string, or a ScriptText object).
 	 * @pre name != null && len(name) != 0.

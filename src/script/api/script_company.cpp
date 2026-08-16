@@ -81,6 +81,28 @@
 	return ::StrMakeValid(::GetString(STR_COMPANY_NAME, ScriptCompany::FromScriptCompanyID(company)), {});
 }
 
+/* static */ SQInteger ScriptCompany::GetMonthsEmpty()
+{
+	const Company *c = ::Company::GetIfValid(_current_company);
+	return (c == nullptr) ? -1 : c->months_empty;
+}
+
+/* static */ SQInteger ScriptCompany::GetMonthsEmptyResets()
+{
+	const Company *c = ::Company::GetIfValid(_current_company);
+	return (c == nullptr) ? -1 : c->months_empty_resets;
+}
+
+/* static */ bool ScriptCompany::SetMonthsEmpty(SQInteger months)
+{
+	Company *c = ::Company::GetIfValid(_current_company);
+	if (c == nullptr || months < 0) return false;
+
+	c->months_empty = months;
+	c->months_empty_resets += 1;
+	return true;
+}
+
 /* static */ bool ScriptCompany::SetPresidentName(Text *name)
 {
 	ScriptObjectRef counter(name);

@@ -97,6 +97,7 @@ struct CompanyProperties {
 	TimerGameCalendar::Year inaugurated_year_calendar{}; ///< Calendar year of starting the company. Used to display proper Inauguration year while in wallclock mode.
 
 	uint8_t months_empty = 0; ///< NOSAVE: Number of months this company has not had a client in multiplayer.
+	uint8_t months_empty_resets = 0; ///< NOSAVE: Number of months_empty resets.
 	uint8_t months_of_bankruptcy = 0; ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked{}; ///< which companies were asked about buying it?
 	int16_t bankrupt_timeout = 0; ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
