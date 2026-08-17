@@ -2005,6 +2005,10 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 		/* The client has joined another company. */
 		std::string company_name = GetString(STR_COMPANY_NAME, company_id);
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_JOIN, DESTTYPE_BROADCAST, 0, company_name, client_id);
+
+		/* Reset company idle timeout */
+		Company::Get(company_id)->months_empty = 0;
+		Company::Get(company_id)->months_empty_resets = 0;
 	}
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
